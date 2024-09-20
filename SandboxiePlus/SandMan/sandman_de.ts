@@ -9,53 +9,53 @@
         <translation>Formular</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="133"/>
+        <location filename="Forms/BoxImageWindow.ui" line="87"/>
         <source>kilobytes</source>
         <translation>Kilobytes</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="153"/>
+        <location filename="Forms/BoxImageWindow.ui" line="145"/>
         <source>Protect Box Root from access by unsandboxed processes</source>
         <translation>Schütze Boxquelle vor Zugriff durch nicht sandgeboxte Prozesse</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="32"/>
-        <location filename="Forms/BoxImageWindow.ui" line="39"/>
+        <location filename="Forms/BoxImageWindow.ui" line="94"/>
+        <location filename="Forms/BoxImageWindow.ui" line="125"/>
         <source>TextLabel</source>
         <translation>Beschriftungstext</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="100"/>
+        <location filename="Forms/BoxImageWindow.ui" line="172"/>
         <source>Show Password</source>
         <translation>Zeige Passwort</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="49"/>
+        <location filename="Forms/BoxImageWindow.ui" line="135"/>
         <source>Enter Password</source>
         <translation>Passwort eingeben</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="66"/>
+        <location filename="Forms/BoxImageWindow.ui" line="64"/>
         <source>New Password</source>
         <translation>Neues Passwort</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="83"/>
+        <location filename="Forms/BoxImageWindow.ui" line="34"/>
         <source>Repeat Password</source>
         <translation>Passwort wiederholen</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="107"/>
+        <location filename="Forms/BoxImageWindow.ui" line="162"/>
         <source>Disk Image Size</source>
         <translation>Diskabbildgröße</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="140"/>
+        <location filename="Forms/BoxImageWindow.ui" line="54"/>
         <source>Encryption Cipher</source>
         <translation>Verschlüsselungschiffre</translation>
     </message>
     <message>
-        <location filename="Forms/BoxImageWindow.ui" line="163"/>
+        <location filename="Forms/BoxImageWindow.ui" line="74"/>
         <source>Lock the box when all processes stop.</source>
         <translation>Sperre die Box, wenn alle Prozesse enden.</translation>
     </message>
@@ -4976,11 +4976,6 @@ This file is part of Sandboxie and all change done to it will be reverted next t
         <translation>Eine Gruppe kann nicht seine eigene Quelle sein.</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="1041"/>
-        <source>7-zip Archive (*.7z);;Zip Archive (*.zip)</source>
-        <translation>7-Zip Archiv (*.7z);;Zip Archiv (*.zip)</translation>
-    </message>
-    <message>
         <location filename="Views/SbieView.cpp" line="1058"/>
         <source>Failed to open archive, wrong password?</source>
         <translation>Fehler beim Öffnen des Archivs, falsches Passwort?</translation>
@@ -5045,6 +5040,7 @@ This file is part of Sandboxie and all change done to it will be reverted next t
         <translation>%1 Kopie</translation>
     </message>
     <message>
+        <location filename="Views/SbieView.cpp" line="1041"/>
         <location filename="Views/SbieView.cpp" line="1408"/>
         <source>7-Zip Archive (*.7z);;Zip Archive (*.zip)</source>
         <translation>7-Zip Archiv (*.7z);;Zip Archiv (*.zip)</translation>
@@ -6813,8 +6809,8 @@ Wenn Sie bereits ein Great Supporter auf Patreon sind, kann Sandboxie online nac
     </message>
     <message>
         <location filename="Forms/CompressDialog.ui" line="75"/>
-        <source>Export Sandbox to a archive, Choose Your Compression Rate and Customize Additional Compression Settings.</source>
-        <translation>Exportieren Sie die Sandbox in ein Archiv, wählen Sie Ihre Komprimierungsrate und passen Sie zusätzliche Komprimierungseinstellungen an.</translation>
+        <source>Export Sandbox to an archive, choose your compression rate and customize additional compression settings.</source>
+        <translation>Exportiere Sandbox in ein Archiv. Wählen Sie Ihre Komprimierungsrate und passen Sie zusätzliche Komprimierungseinstellungen an.</translation>
     </message>
 </context>
 <context>
@@ -6826,8 +6822,8 @@ Wenn Sie bereits ein Great Supporter auf Patreon sind, kann Sandboxie online nac
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="25"/>
-        <source>Export Sandbox from an archive</source>
-        <translation>Exportiere Sandbox aus einem Archiv</translation>
+        <source>Import Sandbox from an archive</source>
+        <translation>Importiere Sandbox aus einem Archiv</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="35"/>
