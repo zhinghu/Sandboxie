@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [1.14.10 / 5.69.10] - 2024-09-
+
+### Fixed
+- fixed issue with sandbox path entry combo boxes
+- fixed Proxy for GetRawInputDeviceInfoW() causes a buffer overflow [#4267](https://github.com/sandboxie-plus/Sandboxie/issues/4267) (thanks marti4d)
+
+
+
 
 ## [1.14.9 / 5.69.9] - 2024-09-19
 

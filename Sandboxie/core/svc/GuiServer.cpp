@@ -3532,9 +3532,15 @@ ULONG GuiServer::GetRawInputDeviceInfoSlave(SlaveArgs *args)
         return STATUS_INFO_LENGTH_MISMATCH;
 
     LPVOID reqData = req->hasData ? (BYTE*)req + sizeof(GUI_GET_RAW_INPUT_DEVICE_INFO_REQ) : NULL;
-    PUINT pcbSize = NULL;
-    if (req->cbSize != -1)
-        pcbSize = &req->cbSize;
+    PUINT pcbSize = req->hasSize ? &req->cbSize : NULL;
+
+    ULONG lenData = 0;
+    if (reqData && pcbSize) {
+        lenData = *pcbSize;
+        if (req->uiCommand == RIDI_DEVICENAME && req->unicode) {
+            lenData *= sizeof(WCHAR);
+        }
+    }
 
     SetLastError(ERROR_SUCCESS);
     if (req->unicode) {
@@ -3545,13 +3551,11 @@ ULONG GuiServer::GetRawInputDeviceInfoSlave(SlaveArgs *args)
     }
     rpl->error = GetLastError();
 
-    rpl->cbSize = req->cbSize;
-    if (pcbSize && req->hasData)
-    {
-        // Note: pcbSize seems to be in tchars not in bytes!
-        ULONG lenData = (*pcbSize) * (req->unicode ? sizeof(WCHAR) : 1);
+    if (pcbSize) 
+		rpl->cbSize = *pcbSize;
 
-        rpl->hasData = TRUE;
+    if (lenData) {
+		rpl->hasData = TRUE;
         LPVOID rplData = (BYTE*)rpl + sizeof(GUI_GET_RAW_INPUT_DEVICE_INFO_RPL);
         memcpy(rplData, reqData, lenData);
     }
