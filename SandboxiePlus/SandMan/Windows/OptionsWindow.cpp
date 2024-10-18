@@ -10,6 +10,55 @@
 #include "../Wizards/TemplateWizard.h"
 
 
+static bool IsAncestorOf(QObject* container, QObject* obj)
+{
+	while (obj)
+	{
+		if (obj == container)
+			return true;
+		obj = obj->parent();
+	}
+	return false;
+}
+
+static QWidgetList GetTabOrder(QObject* container)
+{
+	QWidgetList list;
+	QWidget* pWidget = container->findChild<QWidget*>();
+
+	if (!pWidget)
+		return list;
+	list.append(pWidget);
+
+	for (QWidget* pPrev = pWidget->previousInFocusChain();
+		pPrev && IsAncestorOf(container, pPrev);
+		pPrev = pPrev->previousInFocusChain())
+	{
+		list.prepend(pPrev);
+	}
+
+	for (QWidget* pNext = pWidget->nextInFocusChain();
+		pNext && IsAncestorOf(container, pNext);
+		pNext = pNext->nextInFocusChain())
+	{
+		list.append(pNext);
+	}
+
+	return list;
+}
+
+static void RestoreTabOrder(const QWidgetList& list)
+{
+	QWidget* pPrev = nullptr;
+	for (QWidget* pWidget : list)
+	{
+		if (pPrev)
+			QWidget::setTabOrder(pPrev, pWidget);
+		pPrev = pWidget;
+	}
+}
+
+
 class NoEditDelegate : public QStyledItemDelegate {
 public:
 	NoEditDelegate(QObject* parent = 0) : QStyledItemDelegate(parent) {}
@@ -275,12 +324,14 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	pDummy->setVisible(false);
 
 	// merge recovery tabs
+	QWidgetList tabOrder = GetTabOrder(ui.tabsRecovery);
 	QWidget* pWidget3 = new QWidget();
 	pWidget3->setLayout(ui.gridLayout_10);
 	ui.gridLayout_24->addWidget(pWidget3, 1, 0);
 	QWidget* pWidget4 = new QWidget();
 	pWidget4->setLayout(ui.gridLayout_56);
 	ui.gridLayout_24->addWidget(pWidget4, 2, 0);
+	RestoreTabOrder(tabOrder);
 	delete ui.tabsRecovery;
 	ui.gridLayout_24->setContentsMargins(0, 0, 0, 0);
 
@@ -306,6 +357,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	if (iOptionLayout == 1)
 	{
 		// merge stop tabs
+		tabOrder = GetTabOrder(ui.tabsStop);
 		QWidget* pWidget1 = new QWidget();
 		pWidget1->setLayout(ui.gridLayout_57);
 		ui.gridLayout_17->addWidget(pWidget1, 1, 0);
@@ -319,6 +371,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 		ui.lblStopOpt->setVisible(false);
 		ui.lblStopOpt->setProperty("hidden", true);
 		ui.gridLayout_17->addWidget(pWidget3, 3, 0);
+		RestoreTabOrder(tabOrder);
 		delete ui.tabsStop;
 		ui.gridLayout_17->setContentsMargins(0, 0, 0, 0);
 
@@ -374,6 +427,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	AddIconToLabel(ui.lblLimit, CSandMan::GetIcon("Job2").pixmap(size,size));
 	AddIconToLabel(ui.lblSecurity, CSandMan::GetIcon("Shield5").pixmap(size,size));
 	AddIconToLabel(ui.lblElevation, CSandMan::GetIcon("Shield9").pixmap(size,size));
+	AddIconToLabel(ui.lblACLs, CSandMan::GetIcon("Ampel").pixmap(size,size));
 	AddIconToLabel(ui.lblBoxProtection, CSandMan::GetIcon("BoxConfig").pixmap(size,size));
 	AddIconToLabel(ui.lblNetwork, CSandMan::GetIcon("Network").pixmap(size,size));
 	AddIconToLabel(ui.lblPrinting, CSandMan::GetIcon("Printer").pixmap(size,size));
@@ -394,6 +448,10 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	AddIconToLabel(ui.lblIsolation, CSandMan::GetIcon("Fence").pixmap(size,size));
 	AddIconToLabel(ui.lblAccess, CSandMan::GetIcon("NoAccess").pixmap(size,size));
 	AddIconToLabel(ui.lblProtection, CSandMan::GetIcon("EFence").pixmap(size,size));
+
+	AddIconToLabel(ui.lblPrivacyProtection, CSandMan::GetIcon("Anon").pixmap(size,size));
+	AddIconToLabel(ui.lblProcessHiding, CSandMan::GetIcon("Cmd").pixmap(size,size));
+
 	AddIconToLabel(ui.lblMonitor, CSandMan::GetIcon("Monitor").pixmap(size,size));
 	AddIconToLabel(ui.lblTracing, CSandMan::GetIcon("SetLogging").pixmap(size,size));
 
@@ -472,6 +530,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	pFileBtnMenu->addAction(tr("Browse for File"), this, SLOT(OnForceBrowseChild()));
 	ui.btnForceChild->setPopupMode(QToolButton::MenuButtonPopup);
 	ui.btnForceChild->setMenu(pFileBtnMenu);
+
 	connect(ui.btnForceDir, SIGNAL(clicked(bool)), this, SLOT(OnForceDir()));
 	connect(ui.btnDelForce, SIGNAL(clicked(bool)), this, SLOT(OnDelForce()));
 	connect(ui.chkShowForceTmpl, SIGNAL(clicked(bool)), this, SLOT(OnShowForceTmpl()));
@@ -487,6 +546,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 	ui.btnBreakoutProg->setPopupMode(QToolButton::MenuButtonPopup);
 	ui.btnBreakoutProg->setMenu(pFileBtnMenu2);
 	connect(ui.btnBreakoutDir, SIGNAL(clicked(bool)), this, SLOT(OnBreakoutDir()));
+	connect(ui.btnBreakoutDoc, SIGNAL(clicked(bool)), this, SLOT(OnBreakoutDoc()));
 	connect(ui.btnDelBreakout, SIGNAL(clicked(bool)), this, SLOT(OnDelBreakout()));
 	connect(ui.chkShowBreakoutTmpl, SIGNAL(clicked(bool)), this, SLOT(OnShowBreakoutTmpl()));
 	//ui.treeBreakout->setEditTriggers(QAbstractItemView::DoubleClicked);
@@ -643,8 +703,7 @@ COptionsWindow::COptionsWindow(const QSharedPointer<CSbieIni>& pBox, const QStri
 		m_HoldChange = false;
 	}
 	else {
-		//this->setMinimumHeight(490);
-		this->setMinimumHeight(390);
+		//this->setMinimumHeight(390);
 
 		QWidget* pSearch = AddConfigSearch(ui.tabs);
 		ui.horizontalLayout->insertWidget(0, pSearch);
