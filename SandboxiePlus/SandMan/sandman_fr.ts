@@ -921,12 +921,12 @@ Vous pouvez appuyer sur « Terminer » pour fermer cet assistant.</translation>
     <message>
         <location filename="Windows/CompressDialog.cpp" line="27"/>
         <source>7-Zip</source>
-        <translation type="unfinished"></translation>
+        <translation>7-Zip</translation>
     </message>
     <message>
         <location filename="Windows/CompressDialog.cpp" line="28"/>
         <source>Zip</source>
-        <translation type="unfinished"></translation>
+        <translation>Zip</translation>
     </message>
     <message>
         <location filename="Windows/CompressDialog.cpp" line="30"/>
@@ -964,17 +964,17 @@ Vous pouvez appuyer sur « Terminer » pour fermer cet assistant.</translation>
     <message>
         <location filename="Windows/ExtractDialog.cpp" line="23"/>
         <source>Sandboxie-Plus - Sandbox Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Sandboxie-Plus - Importation de bac</translation>
     </message>
     <message>
         <location filename="Windows/ExtractDialog.cpp" line="39"/>
         <source>Select Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisir un répertoire</translation>
     </message>
     <message>
         <location filename="Windows/ExtractDialog.cpp" line="61"/>
         <source>This name is already in use, please select an alternative box name</source>
-        <translation type="unfinished">Ce nom est déjà utilisé ; veuillez choisir un nom de bac alternatif</translation>
+        <translation>Ce nom est déjà utilisé ; veuillez choisir un nom de bac alternatif</translation>
     </message>
 </context>
 <context>
@@ -2155,7 +2155,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
     </message>
     <message>
         <location filename="Windows/OptionsForce.cpp" line="341"/>
-        <source>For security reasons it it not permitted to create entierly wildcard BreakoutDocument presets.</source>
+        <source>For security reasons it it not permitted to create entirely wildcard BreakoutDocument presets.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5652,7 +5652,7 @@ Remarque : La recherche de mise à jour est souvent en retard par rapport à la 
         <location filename="Views/SbieView.cpp" line="1041"/>
         <location filename="Views/SbieView.cpp" line="1410"/>
         <source>7-Zip Archive (*.7z);;Zip Archive (*.zip)</source>
-        <translation type="unfinished"></translation>
+        <translation>Archive 7-Zip (*.7z) ; Archive Zip (*.zip)</translation>
     </message>
     <message>
         <source>This name is already in use, please select an alternative box name</source>
@@ -7663,7 +7663,7 @@ Idéal s&apos;il y a un grand nombre de petits fichiers, cela rendra l&apos;arch
         <location filename="Forms/CompressDialog.ui" line="75"/>
         <source>Export Sandbox to an archive, choose your compression rate and customize additional compression settings.</source>
         <oldsource>Export Sandbox to a archive, Choose Your Compression Rate and Customize Additional Compression Settings.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Exporte le bac dans une archive. Choisissez le ratio et personnalisez d&apos;autres paramètres de compression.</translation>
     </message>
     <message>
         <source>Export Sandbox to a 7z or Zip archive, Choose Your Compression Rate and Customize Additional Compression Settings.</source>
@@ -7676,33 +7676,33 @@ Idéal s&apos;il y a un grand nombre de petits fichiers, cela rendra l&apos;arch
     <message>
         <location filename="Forms/ExtractDialog.ui" line="14"/>
         <source>Extract Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Extraire les fichiers</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="59"/>
         <source>Import Sandbox from an archive</source>
         <oldsource>Export Sandbox from an archive</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Importer le bac depuis une archive</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="49"/>
         <source>Import Sandbox Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer le nom du bac</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="22"/>
         <source>Box Root Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Dossier racine du bac</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="35"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="82"/>
         <source>Import without encryption</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer sans chiffrement</translation>
     </message>
 </context>
 <context>
@@ -9272,7 +9272,7 @@ au lieu de « * ».</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1331"/>
-        <source>Use original Access Control Entries for boxed Files and Folders (for MSIServer enable excemptions)</source>
+        <source>Use original Access Control Entries for boxed Files and Folders (for MSIServer enable exemptions)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

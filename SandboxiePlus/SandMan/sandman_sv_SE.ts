@@ -321,12 +321,12 @@ För att inaktivera denna mall för en sandlåda, avbocka den helt enkelt i mall
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="927"/>
         <source>Shared template selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Valet Delad mall</translation>
     </message>
     <message>
         <location filename="Wizards/NewBoxWizard.cpp" line="949"/>
         <source>This option specifies the template to be used in shared template mode. (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Detta alternativ specificerar mallen att användas i läget Delad mall. (%1)</translation>
     </message>
     <message>
         <source>This setting adds a local template or its settings to the sandbox configuration so that the settings in that template are shared between sandboxes.
@@ -914,13 +914,13 @@ Vänligen gå till korrekt användarprofilskatalog.</translation>
     <message>
         <location filename="Wizards/SetupWizard.cpp" line="289"/>
         <source>&lt;b&gt;&lt;a href=&quot;_&quot;&gt;&lt;font color=&apos;red&apos;&gt;Get a free evaluation certificate&lt;/font&gt;&lt;/a&gt; and enjoy all premium features for %1 days.&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;&lt;a href=&quot;_&quot;&gt;&lt;font color=&apos;red&apos;&gt;Få ett gratis evalueringscertificat&lt;/font&gt;&lt;/a&gt; och njut av alla premiumegenskaper i %1 dagar.&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="Wizards/SetupWizard.cpp" line="290"/>
         <source>You can request a free %1-day evaluation certificate up to %2 times per hardware ID.</source>
         <oldsource>You can request a free %1-day evaluation certificate up to %2 times for any one Hardware ID</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Du kan begära ett gratis %1 dagars evalueringscertificat upp till %2 gånger per hårdvaru-ID.</translation>
     </message>
     <message>
         <location filename="Wizards/SetupWizard.cpp" line="315"/>
@@ -995,12 +995,12 @@ Du kan klicka på Avsluta för att stänga denna guide.</translation>
     <message>
         <location filename="Windows/CompressDialog.cpp" line="27"/>
         <source>7-Zip</source>
-        <translation type="unfinished"></translation>
+        <translation>7-Zip</translation>
     </message>
     <message>
         <location filename="Windows/CompressDialog.cpp" line="28"/>
         <source>Zip</source>
-        <translation type="unfinished"></translation>
+        <translation>Zip</translation>
     </message>
     <message>
         <location filename="Windows/CompressDialog.cpp" line="30"/>
@@ -1038,17 +1038,17 @@ Du kan klicka på Avsluta för att stänga denna guide.</translation>
     <message>
         <location filename="Windows/ExtractDialog.cpp" line="23"/>
         <source>Sandboxie-Plus - Sandbox Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Sandboxie Plus - Sandlådeimport</translation>
     </message>
     <message>
         <location filename="Windows/ExtractDialog.cpp" line="39"/>
         <source>Select Directory</source>
-        <translation type="unfinished">Välj katalog</translation>
+        <translation>Välj katalog</translation>
     </message>
     <message>
         <location filename="Windows/ExtractDialog.cpp" line="61"/>
         <source>This name is already in use, please select an alternative box name</source>
-        <translation type="unfinished">Detta namn används redan, vänligen välj ett alternativt lådnamn</translation>
+        <translation>Detta namn används redan, vänligen välj ett alternativt lådnamn</translation>
     </message>
 </context>
 <context>
@@ -2232,7 +2232,7 @@ Notera: Uppdateringskontrollen är ofta bakom senaste GitHub-utgivningen för at
     <message>
         <location filename="Windows/OptionsForce.cpp" line="151"/>
         <source>Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokument</translation>
     </message>
     <message>
         <location filename="Windows/OptionsForce.cpp" line="265"/>
@@ -2251,22 +2251,22 @@ Notera: Uppdateringskontrollen är ofta bakom senaste GitHub-utgivningen för at
     <message>
         <location filename="Windows/OptionsForce.cpp" line="327"/>
         <source>Select Document Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj dokumentkatalog</translation>
     </message>
     <message>
         <location filename="Windows/OptionsForce.cpp" line="331"/>
         <source>Please enter Document File Extension.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vänligen för in dokumentfilstillägg.</translation>
     </message>
     <message>
         <location filename="Windows/OptionsForce.cpp" line="341"/>
-        <source>For security reasons it it not permitted to create entierly wildcard BreakoutDocument presets.</source>
-        <translation type="unfinished"></translation>
+        <source>For security reasons it it not permitted to create entirely wildcard BreakoutDocument presets.</source>
+        <translation>För säkerhetsskäl är det inte tillåtet att helt skapa jokerteckenutbrytardokuments förinställningar.</translation>
     </message>
     <message>
         <location filename="Windows/OptionsForce.cpp" line="351"/>
         <source>For security reasons the specified extension %1 should not be broken out.</source>
-        <translation type="unfinished"></translation>
+        <translation>För säkerhetsskäl bör inte det specificerade tillägget %1 brytas ut.</translation>
     </message>
     <message>
         <location filename="Windows/OptionsForce.cpp" line="408"/>
@@ -3031,7 +3031,7 @@ Full sökväg: %4</translation>
     <message>
         <location filename="Windows/RecoveryWindow.cpp" line="246"/>
         <source>No Files selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga filer valda!</translation>
     </message>
     <message>
         <location filename="Windows/RecoveryWindow.cpp" line="250"/>
@@ -5670,7 +5670,7 @@ Notera: Uppdateringskollen är ofta bakom senaste GitHub-utgivningen för att s�
         <location filename="Views/SbieView.cpp" line="1041"/>
         <location filename="Views/SbieView.cpp" line="1410"/>
         <source>7-Zip Archive (*.7z);;Zip Archive (*.zip)</source>
-        <translation type="unfinished"></translation>
+        <translation>7-Zip arkiv (*.7z);;Zip arkiv(*.zip)</translation>
     </message>
     <message>
         <source>This name is already in use, please select an alternative box name</source>
@@ -6231,12 +6231,12 @@ Notera: Uppdateringskollen är ofta bakom senaste GitHub-utgivningen för att s�
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1275"/>
         <source>&lt;b&gt;You have used %1/%2 evaluation certificates. No more free certificates can be generated.&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Du har använt %1/%2 evalueringscertificat. Inga fler gratis certifikat kan genereras.&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1277"/>
         <source>&lt;b&gt;&lt;a href=&quot;_&quot;&gt;Get a free evaluation certificate&lt;/a&gt; and enjoy all premium features for %1 days.&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;&lt;a href=&quot;_&quot;&gt;Få ett gratis evalueringscertifikat&lt;/a&gt; och njut av alla premiumegenskaper i %1 dagar.&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1291"/>
@@ -6308,28 +6308,28 @@ Notera: Uppdateringskollen är ofta bakom senaste GitHub-utgivningen för att s�
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1278"/>
         <source>You can request a free %1-day evaluation certificate up to %2 times per hardware ID.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan begära ett gratis %1 dags evalueringscertifikat upp till %2 gånger per hårdvaru-ID.</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1340"/>
         <source>Expires in: %1 days</source>
         <oldsource>Expires: %1 Days ago</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Utgår om: %1 dagar</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1342"/>
         <source>Expired: %1 days ago</source>
-        <translation type="unfinished"></translation>
+        <translation>Utgick:%1 dagar sedan</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1353"/>
         <source>Options: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternativ: %1</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1358"/>
         <source>Security/Privacy Enhanced &amp; App Boxes (SBox): %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhets-/Integritetsutökad &amp; Applådor (SLåda): %1</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1358"/>
@@ -6337,7 +6337,7 @@ Notera: Uppdateringskollen är ofta bakom senaste GitHub-utgivningen för att s�
         <location filename="Windows/SettingsWindow.cpp" line="1360"/>
         <location filename="Windows/SettingsWindow.cpp" line="1361"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiverad</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1358"/>
@@ -6345,22 +6345,22 @@ Notera: Uppdateringskollen är ofta bakom senaste GitHub-utgivningen för att s�
         <location filename="Windows/SettingsWindow.cpp" line="1360"/>
         <location filename="Windows/SettingsWindow.cpp" line="1361"/>
         <source>Disabled</source>
-        <translation type="unfinished">Inaktiverad</translation>
+        <translation>Inaktiverad</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1359"/>
         <source>Encrypted Sandboxes (EBox): %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Krypterade Sandlådor (KLåda):%1</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1360"/>
         <source>Network Interception (NetI): %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nätverksingripande (NätI): %1</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1361"/>
         <source>Sandboxie Desktop (Desk): %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sandboxie-skrivbord (Bord): %1</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1376"/>
@@ -6394,13 +6394,14 @@ Notera: Uppdateringskollen är ofta bakom senaste GitHub-utgivningen för att s�
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1422"/>
         <source>Sandboxie-Plus - Get EVALUATION Certificate</source>
-        <translation type="unfinished"></translation>
+        <translation>Sandboxie-Plus - Få EVALUERINGScertifikat</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1422"/>
         <source>Please enter your email address to receive a free %1-day evaluation certificate, which will be issued to %2 and locked to the current hardware.
 You can request up to %3 evaluation certificates for each unique hardware ID.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vänligen för in din e-postadress för att motta ett gratis %1 dags evalueringscertifikat, vilket utfärdas till %2 och låst till nuvarande hårdvara.
+Du kan begära upp till %3 evalueringscertifikat för varje unikt hårdvaru-ID.</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="1448"/>
@@ -6451,7 +6452,7 @@ You can request up to %3 evaluation certificates for each unique hardware ID.</s
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="2030"/>
         <source>The evaluation certificate has been successfully applied. Enjoy your free trial!</source>
-        <translation type="unfinished"></translation>
+        <translation>Evalueringscertifikatet har framgångsrikt tillämpats. Njut av ditt gratisprovande!</translation>
     </message>
     <message>
         <location filename="Windows/SettingsWindow.cpp" line="2032"/>
@@ -7559,7 +7560,7 @@ Om du redan är en Great Supporter on Patreon, kan Sandboxie söka på nätet f�
         <location filename="Forms/CompressDialog.ui" line="75"/>
         <source>Export Sandbox to an archive, choose your compression rate and customize additional compression settings.</source>
         <oldsource>Export Sandbox to a archive, Choose Your Compression Rate and Customize Additional Compression Settings.</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Exportera en Sandlåda till ett arkiv, välj din kompressionsgrad och anpassa ytterligare kompressionsinställningar.</translation>
     </message>
     <message>
         <source>Export Sandbox to a 7z or Zip archive, Choose Your Compression Rate and Customize Additional Compression Settings.</source>
@@ -7572,33 +7573,33 @@ Om du redan är en Great Supporter on Patreon, kan Sandboxie söka på nätet f�
     <message>
         <location filename="Forms/ExtractDialog.ui" line="14"/>
         <source>Extract Files</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="59"/>
         <source>Import Sandbox from an archive</source>
         <oldsource>Export Sandbox from an archive</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Importera en sandlåda från ett arkiv</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="49"/>
         <source>Import Sandbox Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Importera sandlådenamn</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="22"/>
         <source>Box Root Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Lådrootsmapp</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="35"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="Forms/ExtractDialog.ui" line="82"/>
         <source>Import without encryption</source>
-        <translation type="unfinished"></translation>
+        <translation>Importera utan kryptering</translation>
     </message>
 </context>
 <context>
@@ -8610,17 +8611,17 @@ Detta görs för att  förhindra Rogue-processer inuti sandlådan från att skap
     <message>
         <location filename="Forms/OptionsWindow.ui" line="961"/>
         <source>Open access to Proxy Configurations</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna tillgång till Proxy-konfigurationer</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1281"/>
         <source>File ACLs</source>
-        <translation type="unfinished"></translation>
+        <translation>Fil-ACLs</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1331"/>
-        <source>Use original Access Control Entries for boxed Files and Folders (for MSIServer enable excemptions)</source>
-        <translation type="unfinished"></translation>
+        <source>Use original Access Control Entries for boxed Files and Folders (for MSIServer enable exemptions)</source>
+        <translation>Använd ursprungliga Tillgångskontrollentrèer för lådade filer och mappar (för MSIServer aktivera undantag)</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1957"/>
@@ -8630,7 +8631,7 @@ Detta görs för att  förhindra Rogue-processer inuti sandlådan från att skap
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2373"/>
         <source>Breakout Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbrytardokument</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2380"/>
@@ -9401,7 +9402,7 @@ istället för &quot;*&quot;.</translation>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="5031"/>
         <source>Hide Network Adapter MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj nätverkadapterns MAC-adress</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="5248"/>
@@ -9636,7 +9637,7 @@ istället för &quot;*&quot;.</translation>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="1998"/>
         <source>Drop ConHost.exe Process Integrity Level</source>
-        <translation type="unfinished"></translation>
+        <translation>Släpp ConHost.exe processintegritetsnivå</translation>
     </message>
     <message>
         <location filename="Forms/OptionsWindow.ui" line="2239"/>
@@ -10390,7 +10391,7 @@ istället för &quot;*&quot;.</translation>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="181"/>
         <source>Terminate all boxed processes when Sandman exits</source>
-        <translation type="unfinished"></translation>
+        <translation>Avsluta alla lådade processer när Sandman avslutar</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1149"/>
@@ -10674,7 +10675,7 @@ istället för &quot;*&quot;.</translation>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1784"/>
         <source>Cert Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Certifikatsinfo</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="1797"/>
@@ -10736,12 +10737,12 @@ Till skillnad från preview-kanalen, inkluderar den inte otestade, möjligen fö
     <message>
         <location filename="Forms/SettingsWindow.ui" line="2266"/>
         <source>This feature protects the sandbox by restricting access, preventing other users from accessing the folder. Ensure the root folder path contains the %USER% macro so that each user gets a dedicated sandbox folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna egenskap skyddar sandlådan genom att begränsa tillgång; förhindra andra användare från att tillgå mappen. Säkerställ att root-mappsökvägen innehåller %ANVÄNDARE%-makrot så att varje användare får en dedikerad sandlådemapp.</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="2269"/>
         <source>Restrict box root folder access to the the user whom created that sandbox</source>
-        <translation type="unfinished"></translation>
+        <translation>Begränsa lådrootmappstillgång för användaren som skapade sandlådan</translation>
     </message>
     <message>
         <location filename="Forms/SettingsWindow.ui" line="2379"/>
