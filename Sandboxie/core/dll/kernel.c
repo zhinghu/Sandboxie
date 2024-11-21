@@ -23,6 +23,8 @@
 //#include <windows.h>
 //#include "common/win32_ntddk.h"
 #include "dll.h"
+#include "obj.h"
+#include <wchar.h>
 
 #include "common/pool.h"
 #include "common/map.h"
@@ -161,7 +163,11 @@ static LCID Kernel_GetSystemDefaultLCID();
 static LANGID Kernel_GetSystemDefaultLangID();
 
 static BOOL Kernel_GetVolumeInformationByHandleW(HANDLE hFile, LPWSTR lpVolumeNameBuffer, DWORD nVolumeNameSize, LPDWORD lpVolumeSerialNumber, LPDWORD lpMaximumComponentLength, LPDWORD lpFileSystemFlags, LPWSTR  lpFileSystemNameBuffer, DWORD nFileSystemNameSize);
-	
+
+extern NTSTATUS File_GetName(
+    HANDLE RootDirectory, UNICODE_STRING *ObjectName,
+    WCHAR **OutTruePath, WCHAR **OutCopyPath, ULONG *OutFlags);
+
 //---------------------------------------------------------------------------
 // Kernel_Init
 //---------------------------------------------------------------------------
@@ -517,10 +523,12 @@ _FX LANGID Kernel_GetSystemDefaultLangID()
 //Kernel_GetVolumeInformationByHandleW
 //----------------------------------------------------------------------------
 
+BOOL hex_string_to_uint8_array(const wchar_t* str, unsigned char* output_array, size_t* output_length, BOOL swap_bytes);
 
 _FX BOOL Kernel_GetVolumeInformationByHandleW(HANDLE hFile, LPWSTR lpVolumeNameBuffer, DWORD nVolumeNameSize, LPDWORD lpVolumeSerialNumber,LPDWORD lpMaximumComponentLength, LPDWORD lpFileSystemFlags, LPWSTR  lpFileSystemNameBuffer, DWORD nFileSystemNameSize) 
 {
 	DWORD ourSerialNumber = 0;
+
 	BOOL rtn = __sys_GetVolumeInformationByHandleW(hFile, lpVolumeNameBuffer, nVolumeNameSize, &ourSerialNumber, lpMaximumComponentLength, lpFileSystemFlags, lpFileSystemNameBuffer, nFileSystemNameSize);
 	if (lpVolumeSerialNumber != NULL) {
 
@@ -533,8 +541,41 @@ _FX BOOL Kernel_GetVolumeInformationByHandleW(HANDLE hFile, LPWSTR lpVolumeNameB
 			*lpVolumeSerialNumber = *lpCachedSerialNumber;
 		else
 		{
-			*lpVolumeSerialNumber = Dll_rand();
+			WCHAR DeviceName[MAX_PATH] = { 0 };
 
+			ULONG LastError;
+			THREAD_DATA* TlsData;
+
+			TlsData = Dll_GetTlsData(&LastError);
+			Dll_PushTlsNameBuffer(TlsData);
+
+			WCHAR* TruePath, * CopyPath;
+			File_GetName(hFile, NULL, &TruePath, &CopyPath, NULL);
+
+			if (_wcsnicmp(TruePath, L"\\Device\\", 8) == 0)
+			{
+				WCHAR* End = wcschr(TruePath + 8, L'\\');
+				if(!End) End = wcschr(TruePath + 8, L'\0');
+				wcsncpy(DeviceName, TruePath + 8, End - (TruePath + 8));
+			}
+
+			Dll_PopTlsNameBuffer(TlsData);
+			SetLastError(LastError);
+
+			if(*DeviceName == 0)
+				*lpVolumeSerialNumber = Dll_rand();
+			else
+			{
+				WCHAR Value[30] = { 0 };
+				SbieDll_GetSettingsForName(NULL, DeviceName, L"DiskSerialNumber", Value, sizeof(Value), L"");
+				DWORD value_buf = 0;;
+				size_t value_len = sizeof(value_buf);
+				if (hex_string_to_uint8_array(Value, &value_buf, &value_len, TRUE))
+					*lpVolumeSerialNumber = value_buf;
+				else 
+					*lpVolumeSerialNumber = Dll_rand();
+			}
+			
 			map_insert(&Kernel_DiskSN, key, lpVolumeSerialNumber, sizeof(DWORD));
 		}
 

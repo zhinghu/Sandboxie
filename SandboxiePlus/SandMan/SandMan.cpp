@@ -1335,7 +1335,7 @@ void CSandMan::closeEvent(QCloseEvent *e)
 	if (!m_bExit)// && !theAPI->IsConnected())
 	{
 		QString OnClose = theConf->GetString("Options/OnClose", "ToTray");
-		if (m_pTrayIcon->isVisible() && OnClose.compare("ToTray", Qt::CaseInsensitive) == 0)
+		if ((m_pTrayIcon->isVisible() && OnClose.compare("ToTray", Qt::CaseInsensitive) == 0) || (OnClose.compare("Hide", Qt::CaseInsensitive) == 0))
 		{
 			StoreState();
 			hide();
@@ -1810,7 +1810,9 @@ void CSandMan::dropEvent(QDropEvent* e)
 	if (Boxes.count() == 1)
 		BoxName = Boxes.first()->GetName();
 
-	QTimer::singleShot(0, this, [Commands, BoxName, this]() { RunSandboxed(Commands, BoxName); });
+	QString WrkDir = QFileInfo(Commands.first()).absoluteDir().path().replace("/","\\");
+
+	QTimer::singleShot(0, this, [Commands, BoxName, WrkDir, this]() { RunSandboxed(Commands, BoxName, WrkDir); });
 }
 
 void CSandMan::timerEvent(QTimerEvent* pEvent)
@@ -2928,7 +2930,7 @@ QString CSandMan::MakeSbieMsgLink(quint32 MsgCode, const QStringList& MsgData, Q
 
 void CSandMan::OnLogSbieMessage(quint32 MsgCode, const QStringList& MsgData, quint32 ProcessId)
 {
-	if ((MsgCode & 0xFFFF) == 2198 ) // file migration progress
+	if ((MsgCode & 0xFFFF) == 2198) // file migration progress
 	{
 		if (!IsDisableMessages() && theConf->GetBool("Options/ShowMigrationProgress", true))
 			m_pPopUpWindow->ShowProgress(MsgCode, MsgData, ProcessId);
@@ -3006,6 +3008,9 @@ void CSandMan::OnLogSbieMessage(quint32 MsgCode, const QStringList& MsgData, qui
 		return; // don't pop that one up
 
 	if ((MsgCode & 0xFFFF) == 2111) // process open denided
+		return; // don't pop that one up
+
+	if ((MsgCode & 0xFFFF) == 1321) // process forced
 		return; // don't pop that one up
 
 	if(MsgCode != 0 && theConf->GetBool("Options/ShowNotifications", true) && !IsDisableMessages())
