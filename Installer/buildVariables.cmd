@@ -1,7 +1,7 @@
 @echo on
 
 set "qt_version=5.15.16"
-set "qt6_version=6.6.3"
+set "qt6_version=6.7.3"
 set "openssl_version=3.4.0"
 set "ghSsl_user=xanasoft"
 set "ghSsl_repo=openssl-builds"
@@ -12,9 +12,11 @@ set "ghQtBuilds_hash_x64=673c288feeabd11ec66f9f454d49cde3945cbd3e3f71283b7a6c4df
 
 REM catch build_qt6
 set "allArgs=%*"
-set "allArgs=%allArgs:build_qt6=%
-if not "%*" == "%allArgs:build_qt6=%" (
-    set "qt_version=%qt6_version%"
-) else (
-    set "qt_version=%qt_version%"
+set "allArgsCatch=%allArgs:build_qt6=%"
+if not "%~1" == "" (
+    if not "%allArgs%" == "%allArgsCatch%" (
+        set "qt_version=%qt6_version%"
+    ) else (
+        set "qt_version=%qt_version%"
+    )
 )

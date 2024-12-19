@@ -106,10 +106,14 @@ copy %qtPath%\plugins\platforms\qwindows.dll %instPath%\platforms\
 
 mkdir %instPath%\styles
 copy %qtPath%\plugins\styles\qwindowsvistastyle.dll %instPath%\styles\
+rem Qt 6.7+
+copy %qtPath%\plugins\styles\qmodernwindowsstyle.dll %instPath%\styles\
 
 IF %archPath% == ARM64 (
 mkdir %instPath%\tls
+copy %qtPath%\plugins\tls\qcertonlybackend.dll %instPath%\tls\
 copy %qtPath%\plugins\tls\qopensslbackend.dll %instPath%\tls\
+copy %qtPath%\plugins\tls\qschannelbackend.dll %instPath%\tls\
 )
 
 IF %archPath% == x64 (
@@ -202,7 +206,9 @@ copy /y %sbiePath%\SandboxieWUAU.pdb %instPath%\
 IF %archPath% == x64 (
   mkdir %instPath%\32\
   copy /y %~dp0..\Sandboxie\Bin\Win32\SbieRelease\SbieSvc.exe %instPath%\32\
+  copy /y %~dp0..\Sandboxie\Bin\Win32\SbieRelease\SbieSvc.pdb %instPath%\32\
   copy /y %~dp0..\Sandboxie\Bin\Win32\SbieRelease\SbieDll.dll %instPath%\32\
+  copy /y %~dp0..\Sandboxie\Bin\Win32\SbieRelease\SbieDll.pdb %instPath%\32\
 
   copy /y %~dp0..\SandboxiePlus\x64\Release\SbieShellExt.dll %instPath%\
   copy /y %~dp0..\SandboxiePlus\x64\Release\SbieShellPkg.msix %instPath%\
@@ -210,10 +216,13 @@ IF %archPath% == x64 (
 IF %archPath% == ARM64 (
   mkdir %instPath%\32\
   copy /y %~dp0..\Sandboxie\Bin\Win32\SbieRelease\SbieSvc.exe %instPath%\32\
+  copy /y %~dp0..\Sandboxie\Bin\Win32\SbieRelease\SbieSvc.pdb %instPath%\32\
   copy /y %~dp0..\Sandboxie\Bin\Win32\SbieRelease\SbieDll.dll %instPath%\32\
+  copy /y %~dp0..\Sandboxie\Bin\Win32\SbieRelease\SbieDll.pdb %instPath%\32\
 
   mkdir %instPath%\64\
   copy /y %~dp0..\Sandboxie\Bin\ARM64EC\SbieRelease\SbieDll.dll %instPath%\64\
+  copy /y %~dp0..\Sandboxie\Bin\ARM64EC\SbieRelease\SbieDll.pdb %instPath%\64\
 
   copy /y %~dp0..\SandboxiePlus\ARM64\Release\SbieShellExt.dll %instPath%\
   copy /y %~dp0..\SandboxiePlus\ARM64\Release\SbieShellPkg.msix %instPath%\
