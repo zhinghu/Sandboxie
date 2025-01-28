@@ -1064,7 +1064,7 @@ You can click Finish to close this wizard.</source>
 <context>
     <name>CFileBrowserWindow</name>
     <message>
-        <location filename="Views/FileView.cpp" line="478"/>
+        <location filename="Views/FileView.cpp" line="481"/>
         <source>%1 - Files</source>
         <translation>%1 - 文件</translation>
     </message>
@@ -1102,7 +1102,7 @@ You can click Finish to close this wizard.</source>
         <translation>选择目录</translation>
     </message>
     <message>
-        <location filename="Views/FileView.cpp" line="433"/>
+        <location filename="Views/FileView.cpp" line="436"/>
         <source>Create Shortcut to sandbox %1</source>
         <translation>为沙盒 %1 创建快捷方式</translation>
     </message>
@@ -4263,12 +4263,12 @@ No will choose: %2</source>
     <message>
         <location filename="SandMan.cpp" line="3549"/>
         <source>Executing maintenance operation, please wait...</source>
-        <translation>正在执行操作维护，请稍候...</translation>
+        <translation>正在执行维护操作，请稍候...</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3670"/>
         <source>In the Plus UI, this functionality has been integrated into the main sandbox list view.</source>
-        <translation>在 Plus 视图，此功能已被整合到主沙盒列表中</translation>
+        <translation>在 Plus 视图中，此功能已被整合到主沙盒列表视图</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3671"/>
@@ -4288,13 +4288,13 @@ No will choose: %2</source>
 This file is part of Sandboxie and all change done to it will be reverted next time Sandboxie is updated.</source>
         <oldsource>You are about to edit the Templates.ini, thsi is generally not recommeded.
 This file is part of Sandboxie and all changed done to it will be reverted next time Sandboxie is updated.</oldsource>
-        <translation>您正准备编辑模板配置文件, 但通常不推荐这么做
-因为该文件是 Sandboxie 的一部分并且所有的更改会在下次更新时被重置</translation>
+        <translation>您正准备编辑模板配置文件(Templates.ini), 但通常不推荐这么做
+因为该文件是 Sandboxie 的一部分并且所有的更改都将会在下次更新时被丢弃</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3840"/>
         <source>The changes will be applied automatically whenever the file gets saved.</source>
-        <translation>当文件被保存时，将自动应用更改</translation>
+        <translation>更改将在文件被保存时被自动应用</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3841"/>
@@ -4324,7 +4324,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     <message>
         <location filename="SandMan.cpp" line="4038"/>
         <source>An incompatible Sandboxie %1 was found. Compatible versions: %2</source>
-        <translation>发现不兼容的 Sandboxie %1，其它兼容的版本：%2</translation>
+        <translation>发现不兼容的 Sandboxie %1，兼容的版本：%2</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="4039"/>
@@ -4525,12 +4525,12 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     <message>
         <location filename="SandMan.cpp" line="2957"/>
         <source>The box %1 is configured to use features exclusively available to project supporters.</source>
-        <translation>沙盒 %1 被指定为仅对项目赞助者开放的功能。</translation>
+        <translation>沙盒 %1 被设置为仅对项目赞助者开放的功能。</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2962"/>
         <source>The box %1 is configured to use features which require an &lt;b&gt;advanced&lt;/b&gt; supporter certificate.</source>
-        <translation>沙盒 %1 被指定为需要更高级赞助许可证的功能。</translation>
+        <translation>沙盒 %1 被设置为需要更高级赞助许可证的功能。</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="2964"/>
@@ -4541,7 +4541,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     <message>
         <location filename="SandMan.cpp" line="3051"/>
         <source>The selected feature requires an &lt;b&gt;advanced&lt;/b&gt; supporter certificate.</source>
-        <translation>选择的功能需要更高级赞助许可证。</translation>
+        <translation>选择的功能需要高级赞助许可证。</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3053"/>
@@ -4556,7 +4556,7 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     <message>
         <location filename="SandMan.cpp" line="3103"/>
         <source>The certificate you are attempting to use has been blocked, meaning it has been invalidated for cause. Any attempt to use it constitutes a breach of its terms of use!</source>
-        <translation>您尝试使用的证书已被阻止，这意味着它已因故失效。任何使用该证书的企图都构成对使用条款的违反！</translation>
+        <translation>您尝试使用的证书已被封禁，这意味着它已因故失效。任何使用该证书的企图都构成对其使用条款的违反！</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3115"/>
@@ -4566,18 +4566,18 @@ This file is part of Sandboxie and all changed done to it will be reverted next 
     <message>
         <location filename="SandMan.cpp" line="3116"/>
         <source>The Certificate is not suitable for this product.</source>
-        <translation>证书不适用于本产品。</translation>
+        <translation>该证书不适用于本产品。</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3117"/>
         <source>The Certificate is node locked.</source>
-        <translation>证书已被节点锁定。</translation>
+        <translation>该证书已被节点锁定。</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3121"/>
         <source>The support certificate is not valid.
 Error: %1</source>
-        <translation>赞助者证书无效。
+        <translation>该赞助者证书无效。
 错误：%1</translation>
     </message>
     <message>
@@ -4590,7 +4590,7 @@ Error: %1</source>
         <location filename="SandMan.cpp" line="3294"/>
         <location filename="SandMan.cpp" line="3319"/>
         <source>Don&apos;t ask in future</source>
-        <translation>此后不再询问</translation>
+        <translation>不再询问</translation>
     </message>
     <message>
         <location filename="SandMan.cpp" line="3318"/>
@@ -4745,10 +4745,10 @@ Error: %1</source>
     <message>
         <location filename="SbieFindWnd.cpp" line="204"/>
         <source>Sandboxie-Plus - Window Finder</source>
-        <translation>Sandboxie-Plus - 窗口探查器</translation>
+        <translation>Sandboxie-Plus - 窗口查找器</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="188"/>
+        <location filename="main.cpp" line="206"/>
         <source>Sandboxie Manager can not be run sandboxed!</source>
         <translation>Sandboxie 管理器不能在沙盒中运行！</translation>
     </message>
@@ -5006,38 +5006,38 @@ Error: %1</source>
 <context>
     <name>CSbieTemplatesEx</name>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="1218"/>
+        <location filename="SbiePlusAPI.cpp" line="1220"/>
         <source>Failed to initialize COM</source>
         <translation>无法初始化COM</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="1224"/>
+        <location filename="SbiePlusAPI.cpp" line="1226"/>
         <source>Failed to create update session</source>
         <translation>无法创建更新会话</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="1230"/>
+        <location filename="SbiePlusAPI.cpp" line="1232"/>
         <source>Failed to create update searcher</source>
         <translation>无法创建更新搜索器</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="1236"/>
+        <location filename="SbiePlusAPI.cpp" line="1238"/>
         <source>Failed to set search options</source>
         <translation>无法设置搜索选项</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="1244"/>
+        <location filename="SbiePlusAPI.cpp" line="1246"/>
         <source>Failed to enumerate installed Windows updates</source>
         <oldsource>Failed to search for updates</oldsource>
         <translation>列举已安装的 Windows 更新 失败</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="1250"/>
+        <location filename="SbiePlusAPI.cpp" line="1252"/>
         <source>Failed to retrieve update list from search result</source>
         <translation>无法从搜索结果中检索更新列表</translation>
     </message>
     <message>
-        <location filename="SbiePlusAPI.cpp" line="1257"/>
+        <location filename="SbiePlusAPI.cpp" line="1259"/>
         <source>Failed to get update count</source>
         <translation>无法获取更新计数</translation>
     </message>
@@ -5103,7 +5103,7 @@ Error: %1</source>
     </message>
     <message>
         <location filename="Views/SbieView.cpp" line="106"/>
-        <location filename="Views/SbieView.cpp" line="205"/>
+        <location filename="Views/SbieView.cpp" line="209"/>
         <location filename="Views/SbieView.cpp" line="267"/>
         <location filename="Views/SbieView.cpp" line="351"/>
         <location filename="Views/SbieView.cpp" line="390"/>
@@ -5111,24 +5111,24 @@ Error: %1</source>
         <translation>创建快捷方式</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="207"/>
+        <location filename="Views/SbieView.cpp" line="211"/>
         <location filename="Views/SbieView.cpp" line="335"/>
         <source>Explore Content</source>
         <translation>浏览内容</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="209"/>
+        <location filename="Views/SbieView.cpp" line="213"/>
         <location filename="Views/SbieView.cpp" line="342"/>
         <source>Snapshots Manager</source>
         <translation>快照管理器</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="212"/>
+        <location filename="Views/SbieView.cpp" line="203"/>
         <source>Recover Files</source>
         <translation>文件恢复</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="213"/>
+        <location filename="Views/SbieView.cpp" line="204"/>
         <location filename="Views/SbieView.cpp" line="334"/>
         <source>Delete Content</source>
         <translation>删除内容</translation>
@@ -5174,7 +5174,7 @@ Error: %1</source>
         <translation>标准应用程序</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="202"/>
+        <location filename="Views/SbieView.cpp" line="206"/>
         <source>Browse Files</source>
         <translation>浏览文件</translation>
     </message>
@@ -5335,17 +5335,17 @@ Error: %1</source>
         <translation>浏览内容</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="201"/>
+        <location filename="Views/SbieView.cpp" line="205"/>
         <source>Box Content</source>
         <translation>沙盒内容</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="208"/>
+        <location filename="Views/SbieView.cpp" line="212"/>
         <source>Open Registry</source>
         <translation>打开注册表</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="204"/>
+        <location filename="Views/SbieView.cpp" line="208"/>
         <location filename="Views/SbieView.cpp" line="350"/>
         <source>Refresh Info</source>
         <translation>刷新信息</translation>
@@ -5564,13 +5564,13 @@ Error: %1</source>
         <translation>选择文件名</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="210"/>
+        <location filename="Views/SbieView.cpp" line="201"/>
         <location filename="Views/SbieView.cpp" line="331"/>
         <source>Mount Box Image</source>
         <translation>挂载磁盘映像</translation>
     </message>
     <message>
-        <location filename="Views/SbieView.cpp" line="211"/>
+        <location filename="Views/SbieView.cpp" line="202"/>
         <location filename="Views/SbieView.cpp" line="332"/>
         <source>Unmount Box Image</source>
         <translation>卸载磁盘映像</translation>

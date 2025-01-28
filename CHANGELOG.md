@@ -3,8 +3,43 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [1.15.6 / 5.70.6] - 2025-01-?
 
-## [1.15.4 / 5.70.4] - 2024-12-??
+### Fixed
+- Sandboxie-Plus data folder did not always work properly
+
+
+
+## [1.15.5 / 5.70.5] - 2025-01-27
+
+### Added
+- added 'HookTrace=y' to debug API hooking
+
+### Changed
+- moved Sandboxie-Plus data folder from C:\\Users\\[User]\\AppData\\Local\\Sandboxie-Plus to C:\\Users\\[User]\\AppData\\Local\\Xanasoft\\Sandboxie-Plus
+  - Note: the folder will be moved automatically, when downgrading to an older version you would need to move it back manually.
+- re ordered some box context menu options a bit [#4444](https://github.com/sandboxie-plus/Sandboxie/issues/4444)
+
+### Fixed
+- fixed crash when pressing run as admin with non-advanced view
+- fixed WerFault.exe errors for all applications on the latest Windows 11 ARM64 [#4422](https://github.com/sandboxie-plus/Sandboxie/issues/4422)
+- fixed issue preventing x64 executables from running on ARM64 [#4415](https://github.com/sandboxie-plus/Sandboxie/issues/4415)
+- fixed issue with process self-termination
+- fixed msedge_elf.dll not found on Windows 10 ARM64
+- fixed Windows 10 ARM64 compatibility issue [#3600](https://github.com/sandboxie-plus/Sandboxie/issues/3600)
+- fixed infinite loop when Gui_ConnectConsole waits for SbieSvc.exe to quit [#4462](https://github.com/sandboxie-plus/Sandboxie/pull/4462) (thanks bot-1450)
+- fixed Program icon not displayed when command path in RunCommand setting contains spaces [#4416](https://github.com/sandboxie-plus/Sandboxie/issues/4416)
+- fixed Template scanning is not working properly [#4401](https://github.com/sandboxie-plus/Sandboxie/issues/4401)
+- fixed credentials dialog does not display when connecting to rdp server by mstsc.exe in encrypted box [#4389](https://github.com/sandboxie-plus/Sandboxie/issues/4389)
+- fixed Recovering a folder only moves the files inside that folder [#4453](https://github.com/sandboxie-plus/Sandboxie/issues/4453)
+- fixed Failure to query file properties causes program exceptions [#4457](https://github.com/sandboxie-plus/Sandboxie/issues/4457) (thanks lmou523)
+- fixed Applications may crash when IP is not defined for the domain name in DNS Filtering [#4475](https://github.com/sandboxie-plus/Sandboxie/issues/4475)
+- Some files don't get written to when launching from "Run Program" menu [#4398](https://github.com/sandboxie-plus/Sandboxie/issues/4398)
+
+
+
+
+## [1.15.4 / 5.70.4] - 2024-12-19
 
 ### Added
 - added template for Joplin [#4402](https://github.com/sandboxie-plus/Sandboxie/pull/4402) (thanks offhub)
