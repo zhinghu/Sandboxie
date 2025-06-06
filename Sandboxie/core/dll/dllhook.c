@@ -399,8 +399,8 @@ _FX void *SbieDll_Hook_x86(
 
 #else ! WIN_64
 
-        func = Hook_CheckChromeHook((void *)target);
-        if (func != (void *)target) {
+        func = Hook_CheckChromeHook((void *)target, (void*)GET_PEB_IMAGE_BASE);
+        if (func && func != (UCHAR*)-1) {
             SourceFunc = func;
             goto skip_e9_rewrite;
         }
@@ -1160,8 +1160,9 @@ finish:
 //---------------------------------------------------------------------------
 
 #define HOOK_STAT_CHROME        0x00000001
-#define HOOK_STAT_NO_FFS        0x00000002
-#define HOOK_STAT_SKIPPED       0x00000004
+#define HOOK_STAT_CHROME_FAIL   0x00000002
+#define HOOK_STAT_NO_FFS        0x00000004
+#define HOOK_STAT_SKIPPED       0x00000008
 #define HOOK_STAT_TRACE         0x00000100
 #define HOOK_STAT_SYSCALL       0x00000200 // ARM64 EC only
 #define HOOK_STAT_INTERESTING   0x000000FF
@@ -1173,15 +1174,21 @@ _FX void *SbieDll_HookFunc(
     // Chrome sandbox support
     //
 
-    void* OldSourceFunc = SourceFunc;
+    void* ChromeFunc = Hook_CheckChromeHook(SourceFunc, (void*)GET_PEB_IMAGE_BASE);
+    if (ChromeFunc) {
+        if (pHookStats) *pHookStats |= HOOK_STAT_CHROME;
+        if (ChromeFunc != (void*)-1)
+            SourceFunc = ChromeFunc;
+        else {
+            //SbieApi_Log(2328, _fmt1, SourceFuncName, 1);
+            if (pHookStats) *pHookStats |= HOOK_STAT_CHROME_FAIL;
+        }
+    }
 
-    SourceFunc = Hook_CheckChromeHook(SourceFunc);
-
-    if (OldSourceFunc != SourceFunc) {
-		if (pHookStats) *pHookStats |= HOOK_STAT_CHROME;
+    //if (OldSourceFunc != SourceFunc) {
     //    WCHAR* ModuleName = Trace_FindModuleByAddress((void*)module);
     //    DbgPrint("Found Chrome Hook on: %S!%s\r\n", ModuleName, SourceFuncName);
-    }
+    //}
     
 
 #ifdef _M_ARM64EC
@@ -1227,7 +1234,9 @@ _FX void *SbieDll_HookFunc(
         }
         else
         {
-
+            
+            if(strcmp(SourceFuncName, "ShellExecuteExW") != 0) // for these functions its fine
+                SbieApi_Log(2329, _fmt1, SourceFuncName, 1);
             if (pHookStats) *pHookStats |= HOOK_STAT_NO_FFS;
         }
     }
@@ -1384,8 +1393,13 @@ finish:
             SourceFuncName);
 		dbg_ptr += len;
 		dbg_size -= len;
-        if (HookStats & HOOK_STAT_CHROME) {
-            len = Sbie_snwprintf(dbg_ptr, dbg_size, L" (Chrome Hooked)");
+        if (HookStats & HOOK_STAT_CHROME_FAIL) {
+            len = Sbie_snwprintf(dbg_ptr, dbg_size, L" (Chrome Hook Unresolved)");
+            dbg_ptr += len;
+            dbg_size -= len;
+        }
+        else if (HookStats & HOOK_STAT_CHROME) {
+            len = Sbie_snwprintf(dbg_ptr, dbg_size, L" (Chrome Hook Hooked)");
             dbg_ptr += len;
             dbg_size -= len;
         }
@@ -1396,8 +1410,7 @@ finish:
             dbg_size -= len;
         }
 #endif
-		wcscat(dbg_ptr, L"\r\n");
-        SbieApi_MonitorPutMsg(MONITOR_HOOK | MONITOR_TRACE, dbg);
+        SbieApi_MonitorPutMsg(MONITOR_HOOK | MONITOR_TRACE | ((HookStats & HOOK_STAT_SKIPPED) ? MONITOR_OPEN : 0), dbg);
     }
 
     return func;
@@ -1580,140 +1593,6 @@ BOOLEAN SbieDll_FuncSkipHook(const char* func)
 
 
 //---------------------------------------------------------------------------
-// Dll_GetSettingsForImageName
-//---------------------------------------------------------------------------
-
-
-_FX NTSTATUS Dll_GetSettingsForImageName(
-    const WCHAR *setting, WCHAR* value, ULONG value_size, const WCHAR *deftext)
-{
-    POOL *pool;
-    WCHAR *text, *image_lwr, *buf;
-    ULONG text_len, image_len;
-    ULONG index;
-    BOOLEAN match = FALSE;
-
-    //
-    //
-    //
-
-    pool = Pool_Create();
-    if (! pool)
-        goto outofmem;
-
-    //
-    //
-    //
-
-    if (deftext)
-        text_len = wcslen(deftext);
-    else
-        text_len = 0;
-    text = Pool_Alloc(pool, (text_len + 1) * sizeof(WCHAR));
-    if (! text)
-        goto outofmem;
-    wmemcpy(text, deftext, text_len);
-    text[text_len] = L'\0';
-
-    //
-    //
-    //
-
-    image_len = (wcslen(Dll_ImageName) + 1) * sizeof(WCHAR);
-    image_lwr = Pool_Alloc(pool, image_len);
-    if (! image_lwr)
-        goto outofmem;
-    memcpy(image_lwr, Dll_ImageName, image_len);
-    _wcslwr(image_lwr);
-    image_len = wcslen(image_lwr);
-
-    //
-    //
-    //
-
-    buf = Pool_Alloc(pool, 1024 * sizeof(WCHAR));
-    if (! buf)
-        goto outofmem;
-
-    index = 0;
-    while (1) {
-
-        WCHAR *ptr, *buf_ptr;
-        PATTERN *image_pat;
-
-        NTSTATUS status = SbieApi_QueryConfAsIs(
-                    NULL, setting, index, buf, 1020 * sizeof(WCHAR));
-        if (! NT_SUCCESS(status))
-            break;
-        ++index;
-
-        ptr = wcschr(buf, L',');
-        if (!ptr) {
-            ptr = buf;
-            goto skip_match; // if there is no L',' it means any image
-        }
-        *ptr = L'\0';
-
-        if (buf[0] == L'/' && buf[1] == L'/' &&
-                (Dll_ProcessFlags & SBIE_FLAG_IMAGE_FROM_SBIE_DIR)) {
-            // a // prefix in the image name (such as //start.exe) matches
-            // only if the image resides in our installation directory
-            buf_ptr = buf + 2;
-        } else
-            buf_ptr = buf;
-
-        image_pat = Pattern_Create(pool, buf_ptr, TRUE, 0);
-        if (Pattern_Match(image_pat, image_lwr, image_len)) {
-
-            match = TRUE;
-        }
-
-        Pattern_Free(image_pat);
-
-        if (!match)
-            continue;
-
-        if (text_len)
-            *ptr = L',';    // restore comma if text is not empty
-        else
-            ++ptr;          // or skip comma if text is empty
-
-        skip_match:
-        {
-            ULONG ptr_len;
-            WCHAR* new_text;
-            ptr_len = wcslen(ptr);
-            new_text = Pool_Alloc(pool,
-                (text_len + ptr_len + 1) * sizeof(WCHAR));
-            if (!new_text)
-                goto outofmem;
-            wmemcpy(new_text, text, text_len);
-            wmemcpy(new_text + text_len, ptr, ptr_len + 1);
-            text = new_text;
-            text_len = text_len + ptr_len;
-        }
-        break;
-    }
-
-    //
-    // finish
-    //
-
-    wcscpy_s(value, value_size / sizeof(WCHAR), text);
-
-    Pool_Delete(pool);
-
-    return STATUS_SUCCESS;
-
-outofmem:
-
-    SbieApi_Log(2305, NULL);
-    ExitProcess(-1);
-    return STATUS_INSUFFICIENT_RESOURCES;
-}
-
-
-//---------------------------------------------------------------------------
 // Dll_SkipHook
 //---------------------------------------------------------------------------
 
@@ -1732,7 +1611,7 @@ _FX BOOLEAN Dll_SkipHook(const WCHAR *HookName)
 
         HookTextInit = FALSE;
 
-        Dll_GetSettingsForImageName(L"SkipHook", HookText, sizeof(HookText), NULL);
+		SbieDll_GetSettingsForName(NULL, Dll_ImageName, L"SkipHook", HookText, sizeof(HookText), L"");
     } 
     
     //

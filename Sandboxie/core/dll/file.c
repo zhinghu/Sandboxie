@@ -30,6 +30,7 @@
 #include "core/svc/InteractiveWire.h"
 #include "core/svc/UserWire.h"
 #include "debug.h"
+#include "trace.h"
 
 //---------------------------------------------------------------------------
 // Defines
@@ -3372,9 +3373,11 @@ ReparseLoop:
 
                 int depth = File_CheckDepthForIsWritePath(TruePath);
                 if (depth == 0) {
-                    status = File_GetFileType(&objattrs, TRUE, &FileType, NULL);
-                    if (status == STATUS_NOT_A_DIRECTORY)
-                        status = STATUS_ACCESS_DENIED;
+                    FileType = 0;
+                    status = STATUS_SUCCESS;
+                    //status = File_GetFileType(&objattrs, TRUE, &FileType, NULL);
+                    //if (status == STATUS_NOT_A_DIRECTORY)
+                    //    status = STATUS_ACCESS_DENIED;
                 } else {
                     FileType = 0;
                     if (depth == 1 || HaveCopyParent || HaveSnapshotParent)
